@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  shortener:
+    container_name: shortener
+    build:
+      context: .
+      target: dev
+      args:
+        AIR_OS: ${AIR_OS}
+        AIR_ARCH: ${AIR_ARCH}
+        AIR_VERSION: ${AIR_VERSION}
+    volumes:
+    - .:/app:rw,delegated
+    env_file:
+    - runtime.env
+    ports:
+    - 2345:2345
+    - 8080:8080
+  mongodb:
+    container_name: backend-mongo
+    image: mongo:4.4
+    ports:
+    - 27017:27017
+    env_file:
+    - runtime.env
+  mongo-express:
+    container_name: admin-mongo
+    image: mongo-express:0.54
+    ports:
+    - 8181:8081
+    env_file:
+    - runtime.env

@@ -1,0 +1,21 @@
+POST http://localhost:8080 HTTP/1.1
+content-type: application/json
+
+{
+    "url": "https://www.google.com"
+}
+
+###
+
+POST http://localhost:8080 HTTP/1.1
+content-type: application/json
+
+{
+    "url": "https://www.stackoverflow.com"
+}
+
+###
+
+GET http://localhost:8080/C6ePfwgng HTTP/1.1
+
+###
