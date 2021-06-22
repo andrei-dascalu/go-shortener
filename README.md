@@ -1,4 +1,4 @@
-# Hexagona Go Tutorial by Tensor #
+# Hexagonal Architecture Go Tutorial #
 
 ### Videos ###
 
