@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-redis/redis"
 	"github.com/pkg/errors"
+	"github.com/rs/zerolog/log"
 
 	"github.com/andrei-dascalu/go-shortener/src/shortener"
 )
@@ -42,6 +43,7 @@ func (r *redisRepository) generateKey(code string) string {
 }
 
 func (r *redisRepository) Find(code string) (*shortener.Redirect, error) {
+	log.Warn().Msg("Find in Redis")
 	redirect := &shortener.Redirect{}
 	key := r.generateKey(code)
 	data, err := r.client.HGetAll(key).Result()
@@ -62,6 +64,7 @@ func (r *redisRepository) Find(code string) (*shortener.Redirect, error) {
 }
 
 func (r *redisRepository) Store(redirect *shortener.Redirect) error {
+	log.Warn().Msg("Store in Redis")
 	key := r.generateKey(redirect.Code)
 	data := map[string]interface{}{
 		"code":       redirect.Code,

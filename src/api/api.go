@@ -16,7 +16,7 @@ type RedirectHandler struct {
 	redirectService shortener.RedirectService
 }
 
-func (h RedirectHandler) serializer(contentType string) shortener.RedirectSerializer {
+func serializer(contentType string) shortener.RedirectSerializer {
 	if contentType == "application/x-msgpack" {
 		return &ms.Redirect{}
 	}
@@ -54,7 +54,7 @@ func PostHandler(shortenerHandler RedirectHandler) func(c *fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
 		contentType := c.Get("Content-Type")
 
-		redirect, err := shortenerHandler.serializer(contentType).Decode(c.Request().Body())
+		redirect, err := serializer(contentType).Decode(c.Request().Body())
 		if err != nil {
 			log.Error().Err(err).Msg("500-1")
 			return c.SendStatus(http.StatusInternalServerError)
@@ -70,7 +70,7 @@ func PostHandler(shortenerHandler RedirectHandler) func(c *fiber.Ctx) error {
 			log.Error().Err(err).Msg("500-2")
 			return c.SendStatus(http.StatusInternalServerError)
 		}
-		responseBody, err := shortenerHandler.serializer(contentType).Encode(redirect)
+		responseBody, err := serializer(contentType).Encode(redirect)
 		if err != nil {
 			return c.SendStatus(http.StatusInternalServerError)
 		}

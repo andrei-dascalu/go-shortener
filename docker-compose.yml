@@ -34,3 +34,6 @@ services:
     - runtime.env
     depends_on:
     - mongodb
+  redis:
+    container_name: redis
+    image: redis:latest

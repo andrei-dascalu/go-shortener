@@ -53,6 +53,7 @@ func NewMongoRepository(mongoURL, mongoDB string, mongoTimeoutSeconds int) (shor
 }
 
 func (r *mongoRepository) Find(code string) (*shortener.Redirect, error) {
+	log.Warn().Msg("Find in Mongo")
 	ctx, cancel := context.WithTimeout(context.Background(), r.timeout)
 	defer cancel()
 	redirect := &shortener.Redirect{}
@@ -70,6 +71,7 @@ func (r *mongoRepository) Find(code string) (*shortener.Redirect, error) {
 }
 
 func (r *mongoRepository) Store(redirect *shortener.Redirect) error {
+	log.Warn().Msg("Store in Mongo")
 	ctx, cancel := context.WithTimeout(context.Background(), r.timeout)
 	defer cancel()
 	collection := r.client.Database(r.database).Collection("redirects")
