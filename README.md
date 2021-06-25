@@ -11,6 +11,7 @@ Based on [Building Hexagonal Microservices with Go](https://www.youtube.com/watc
 * Dockerised with Composer support for backends (redis/mongo)
 * Prepared adapter for MySQL (via Gorm)
 * Container with development tools (Air for auto-rebuild, Delve for debugging)
+* Uses EasyJSON for JSON serialisation
 
 
 ## Resources ##
@@ -41,3 +42,10 @@ Based on [Building Hexagonal Microservices with Go](https://www.youtube.com/watc
 * `choco install vscode-vsliveshare`
 * `choco install vscode-live-share-audio`
 * VSCode REST client installed via VSCode
+
+
+## Additional tools ##
+
+These should be installed on-demand, as the workshop progresses
+
+* EasyJSON: `go get -u github.com/mailru/easyjson/...` (`easyjson` should become available in path)
