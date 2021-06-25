@@ -16,6 +16,8 @@ services:
     ports:
     - 2345:2345
     - 8080:8080
+    depends_on:
+    - mongo-express
   mongodb:
     container_name: backend-mongo
     image: mongo:4.4
@@ -30,3 +32,5 @@ services:
     - 8181:8081
     env_file:
     - runtime.env
+    depends_on:
+    - mongodb
