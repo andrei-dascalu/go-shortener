@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/andybalholm/brotli v1.0.3 // indirect
-	github.com/aws/aws-sdk-go v1.38.66 // indirect
+	github.com/aws/aws-sdk-go v1.38.67 // indirect
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/gofiber/fiber/v2 v2.13.0
 	github.com/klauspost/compress v1.13.1 // indirect
