@@ -1,0 +1,21 @@
+syntax = "proto3";
+package grpcserve;
+
+option go_package = "github.com/andrei-dascalu/go-shortener/src/grpcserve";
+
+message ShortRequest {
+    string URL = 1;
+}
+
+
+message ShortResponse {
+    string URL = 1;
+    int64 CreatedAt = 2;
+    string Code = 3;
+}
+
+
+service ShortenerService {
+    rpc Short(ShortRequest) returns (ShortResponse) {};
+    rpc ShortMany(stream ShortRequest) returns (stream ShortResponse) {};
+}

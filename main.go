@@ -26,12 +26,10 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World 👋!")
-	})
-
 	app.Get("/:code", api.GetHandler(handler))
 	app.Post("/", api.PostHandler(handler))
+
+	go api.StartServer(service)
 
 	log.Panic().Err(app.Listen(":8080")).Msg("Failed to start service")
 }
