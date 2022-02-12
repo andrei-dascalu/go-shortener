@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine AS base
+FROM golang:1.17-alpine AS base
 WORKDIR /app
 
 ENV GO111MODULE="on"
@@ -33,8 +33,8 @@ RUN wget -O air https://github.com/cosmtrek/air/releases/download/v${AIR_VERSION
     && chmod +x /usr/local/bin/air \
     && git clone https://github.com/go-delve/delve.git \
     && cd delve \
-    && go install github.com/go-delve/delve/cmd/dlv 
-     
+    && go install github.com/go-delve/delve/cmd/dlv
+
 EXPOSE 8080
 EXPOSE 2345
 

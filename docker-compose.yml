@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 services:
   shortener:
     container_name: shortener
@@ -20,7 +20,7 @@ services:
     - mongo-express
   mongodb:
     container_name: backend-mongo
-    image: mongo:4.4
+    image: mongo:5
     ports:
     - 27017:27017
     env_file:
